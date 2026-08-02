@@ -1,6 +1,6 @@
 name: using actions
 on: 
-  push:
+  workflow_dispatch
 
 jobs:
   build:
