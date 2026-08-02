@@ -9,6 +9,12 @@ jobs:
       - name: Checkout code 
         uses: actions/checkout@v7
 
-      - name: printing folders
-        run: tree
-       
+      - name: Setup Node
+        uses: actions/setup-node@v3 
+        with:
+          node-version: '24'
+
+      - name: Install Dependencies
+        working-directory: /home/sebrajesh/DevOps/github-actions-u2/react-app
+        run: npm ci 
+        
