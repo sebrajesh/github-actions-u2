@@ -15,6 +15,6 @@ jobs:
           node-version: '24'
 
       - name: Install Dependencies
-        run: cd ../../react-app
+        working-directory: ./react-app
         run: npm ci 
         
