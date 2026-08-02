@@ -12,3 +12,21 @@ jobs:
             echo "This job is running on Ubuntu runner"
             echo " Runner OS: $RUNNER_OS"
  
+   windows_echo:
+      runs-on: windows-latest
+      steps:
+        - name: windows-echo
+          shell: pwsh
+          run: |
+            Write-Host "This job is running on Windows runner"
+            Write-Host " Runner OS: $env:RUNNER_OS"
+   
+   mac-echo:
+      runs-on: macos-latest
+      steps:
+        - name: mac-echo
+          shell: bash
+          run: |
+            echo "This job is running on macOS runner"
+            echo " Runner OS: $RUNNER_OS"
+            
