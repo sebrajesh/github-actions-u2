@@ -18,3 +18,6 @@ jobs:
         working-directory: ./react-app
         run: npm ci 
         
+      - name: Run Unut tests
+        working-directory: ./react-app
+        run: npm run test 
