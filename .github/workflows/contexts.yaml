@@ -4,7 +4,7 @@ env:
     MY_WORKFLOW_VAR: 'workflow'
     MY_OVERWRITTEN_VAR: 'workflow'
 
-run-name: 06 - Contexts | DEBUB - ${{ runner.os }}
+run-name: 06 - Contexts | DEBUB - ${{ inputs.debug }}
 
 on:
   push:
