@@ -6,14 +6,14 @@ env:
 
 run-name: 06 - Contexts | DEBUB - ${{ inputs.debug }}
 
-on:
-  push:
-  workflow_dispatch:
-    inputs:
-       debug:
-         description: 'Enable debug mode'
-         type: boolean
-         default: false
+# on:
+#   push:
+#   workflow_dispatch:
+#     inputs:
+#        debug:
+#          description: 'Enable debug mode'
+#          type: boolean
+#          default: false
 
 jobs:
   echo-data:
