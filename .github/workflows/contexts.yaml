@@ -25,7 +25,7 @@ jobs:
       - name: Dsplay Information
         run: |
             echo "Event name: ${{ github.event_name}}"
-            echo "Ref: ${{ github.ref }}""
+            echo "Ref: ${{ github.ref }}"
             echo "SHA: ${{ github.sha}}"
             echo  "Actor: ${{ github.actor }}"
             echo "Workflow: ${{ github.workflow}}"
@@ -59,5 +59,5 @@ jobs:
       - name: Print Env Variables
         run: |
           echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
-          echo "Overwritten env: ${{ env.OVERWRITTEN_VAR }}"
+          echo "Overwritten env: ${{ env.MY_OVERWRITTEN_VAR }}"
       
