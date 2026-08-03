@@ -1,5 +1,9 @@
 name: contexts
 
+env:
+    MY_WORKFLOW_VAR: 'workflow'
+    MY_OVERWRITTEN_VAR: 'workflow'
+
 run-name: 06 - Contexts | DEBUB - ${{ inputs.debug }}
 
 on:
@@ -13,6 +17,9 @@ on:
 
 jobs:
   echo-data:
+    env:
+      MY_JOB_VAR: 'job'
+      MY_OVERWRITTEN_VAR: 'job'
     runs-on: ubuntu-latest
     steps:
       - name: Dsplay Information
@@ -36,3 +43,18 @@ jobs:
         env:
           MY_VAR: ${{ vars.MY_VAR }}
         run: echo "$MY_VAR"
+
+      - name: Print Env Variables, define overwirtten var here
+        env:
+          MY_OVERRITEN_VAR: 'step'
+        run: |
+          echo "Workflow env: $MY_WORKFLOW_VAR  <retrieve the value of the MY_WORKFLOW_VAR env variable here>"
+
+          echo "Overwritten env: $MY_OVERWRITTEN_VAR <retrieve the value of the MY_OVERWRITTEN_VAR env variable here>"
+
+      - name: Print another env
+        run: |
+          echo "Workflow env: $MY_WORKFLOW_VAR  <retrieve the value of the MY_WORKFLOW_VAR env variable here>"
+
+          echo "Overwritten env: $MY_OVERWRITTEN_VAR <retrieve the value of the MY_OVERWRITTEN_VAR env variable here>"
+          
