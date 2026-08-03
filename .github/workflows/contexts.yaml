@@ -46,7 +46,7 @@ jobs:
 
       - name: Print Env Variables, define overwirtten var here
         env:
-          MY_OVERRITEN_VAR: 'step'
+          MY_OVERWRITTEN_VAR: 'step'
         run: |
           echo "Workflow env: $MY_WORKFLOW_VAR  <retrieve the value of the MY_WORKFLOW_VAR env variable here>"
 
