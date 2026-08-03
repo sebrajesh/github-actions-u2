@@ -4,25 +4,26 @@ on:
   push:
   workflow_dispatch:
 
-echo-data:
-  runs_on: ubutnu-latest
-  steps:
-     - name: Dsplay Information
-       run: |
-          echo "Event name: ${{ github.event_name}}"
+jobs:
+  echo-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dsplay Information
+        run: |
+            echo "Event name: ${{ github.event_name}}"
 
-          echo "Ref: ${{ github.ref }}  <retrieve the ref here>"
+            echo "Ref: ${{ github.ref }}  <retrieve the ref here>"
 
-          echo "SHA: ${{ github.sha}}    <retrieve the commit sha here>"
+            echo "SHA: ${{ github.sha}}    <retrieve the commit sha here>"
 
-          echo  "Actor: ${{ github.actor }}  <retrieve the actor name here>"
+            echo  "Actor: ${{ github.actor }}  <retrieve the actor name here>"
 
-          echo "Workflow: ${{ github.workflow}} <retrieve the workflow name here>"
+            echo "Workflow: ${{ github.workflow}} <retrieve the workflow name here>"
 
-          echo "Run ID: ${{ github.run_id }}<retrieve the run ID here>"
- 
-          echo "Run number: ${{ github.run_number }} <retrieve the run number here>"
+            echo "Run ID: ${{ github.run_id }}<retrieve the run ID here>"
+  
+            echo "Run number: ${{ github.run_number }} <retrieve the run number here>"
 
-    
-     - name: Retrieve VAriable 
-       run: echo " $REPOSITORY_MY_VAR"
+      
+      - name: Retrieve VAriable 
+        run: echo " $REPOSITORY_MY_VAR"
