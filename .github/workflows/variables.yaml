@@ -1,7 +1,6 @@
 name: Using variables
 
 on:
-  push:
   workflow_dispatch:
 
 env: 
