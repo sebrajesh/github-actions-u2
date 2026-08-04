@@ -1,7 +1,6 @@
 name: Using Functions
 
 on: 
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -11,19 +10,23 @@ jobs:
       - name: Print PR title
         run: echo "${{ github.event.pull_request.title }}"
       - name: Print PR labels
-        run: echo "${{ toJSON(github.event.pull_request.labels) }}"
+        run: |
+            cat << EOF
+            ${{ toJSON(github.event.pull_request.labels) }}
+            EOF
+      - name: Test
+        if: cancelled()
+        run: echo "test"
+      - name: Test2
+        if: ${{ !cancelled() }}
+        run: echo "test2"
       - name: Bug step 
-        if: ${{ failure( ) && !cancelled() &&  contains(github.event.pull_request.title, 'fix') }}
+        if: ${{ !cancelled() &&  contains(github.event.pull_request.title, 'fix') }}
         run: echo "I am a bug fix"
-      - name: Sleep for 20 seconds
-        shell: bash
-        run: sleep 20
-      - name: Failing steps
-        run: exit 1
-      - name: I will be skipped
+      - name: I will execute
         if: ${{ success() }}
         run: echo "I will print if previous step succeded."
-      - name: I will execute 
+      - name: I will be skipped
         if: ${{ failure() }}
         run: echo "I will print if any previous step fails."
       - name: I will execute 
