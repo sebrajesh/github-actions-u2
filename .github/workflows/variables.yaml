@@ -42,9 +42,9 @@ jobs:
           echo "Org var: ${{ vars.ORG_VAR || 'default value' }}"
           echo "Org overwritten var: ${{ vars.OVERWRITTEN_VAR || 'default value' }}"
           echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
-          
+
   echo-prod:
-    runs-on: ubutnu-latest
+    runs-on: ubuntu-latest
     environment: prod
     steps:
       - name: Print prod variables
