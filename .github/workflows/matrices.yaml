@@ -19,7 +19,7 @@ jobs:
           - os: ubuntu-latest
             node: 26
             tag: experimental
-        fail-fast: false
+    fail-fast: false
 
     steps: 
       - name: Setup node
