@@ -1,0 +1,40 @@
+name: Working with matrices
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  backwars-compatibility:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.os }}-${{ matrix.node }}
+    strategy:
+      matrix: 
+        node: [24, 26]
+        os: 
+          - ubuntu-latest
+          - windows-latest
+        include:
+          - os: ubuntu-latest
+            node: 24
+          - os: ubuntu-latest
+            node: 26
+            tag: experimental
+        fail-fast: false
+
+    steps: 
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with: 
+          node-version: ${{ matrix.node }}
+      - name: FAil if experimental
+        if: ${{ matrix.tag == 'experimental' }}
+        run: exit 1
+
+      - name: Perform some tests
+        run: |
+          echo "Running tests on os ${{ matrix.os }} and NodeJS ${{ matrix.node }}"
+          sleep 10
+      - name: Upload test results
+        run: |
+          echo "Uploading test results"
+        
