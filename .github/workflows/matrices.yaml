@@ -5,34 +5,34 @@ on:
 
 jobs:
   backwars-compatibility:
-    runs-on: ubuntu-latest
-    name: ${{ matrix.os }}-${{ matrix.node }}
+    runs-on: ${{ matrix.node-version }}
+    name: ${{ matrix.os }}-${{ matrix.node-version }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix: 
-        node: [24, 26]
+        node-version: [24, 26]
         os: 
           - ubuntu-latest
           - windows-latest
         include:
           - os: ubuntu-latest
-            node: 24
+            node-version: 24
           - os: ubuntu-latest
-            node: 26
+            node-version: 26
             tag: experimental
     
     steps: 
-      - name: Setup node
+      - name: Setup node-version
         uses: actions/setup-node@v6
         with: 
-          node-version: ${{ matrix.node }}
+          node-version: ${{ matrix.node-version }}
       - name: FAil if experimental
         if: ${{ matrix.tag == 'experimental' }}
         run: exit 1
 
       - name: Perform some tests
         run: |
-          echo "Running tests on os ${{ matrix.os }} and NodeJS ${{ matrix.node }}"
+          echo "Running tests on os ${{ matrix.os }} and node-versionJS ${{ matrix.node-version }}"
           sleep 10
       - name: Upload test results
         run: |
